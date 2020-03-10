@@ -1,8 +1,10 @@
 <?php
     // Add database and table functions
     require('../../model/db.php');
-    require('../../model/item_db.php');
-    require('../../model/category_db.php');
+    require('../../model/vehicle_db.php');
+    require('../../model/type_db.php');
+    require('../../model/class_db.php');
+    require('../../model/make_db.php');
    
     // Set action based on if POST or GET
     $action = filter_input(INPUT_POST, 'action');
@@ -20,11 +22,19 @@
     // Default action, get categories by id or all
     if ($action == 'vehicle-list') {
         // Get category ID from GET with validation
-        // $category_id = filter_input(INPUT_GET, 'category_id',                 FILTER_VALIDATE_INT);
+        $typeID = filter_input(INPUT_GET, 'typeID', FILTER_VALIDATE_INT);
+        $classID = filter_input(INPUT_GET, 'classID', FILTER_VALIDATE_INT);
+        $makeID = filter_input(INPUT_GET, 'makeID', FILTER_VALIDATE_INT);
+        $sort = filter_input(INPUT_GET, 'sort', FILTER_VALIDATE_INT);
+        $sortDirection = filter_input(INPUT_GET, 'sortDirection', FILTER_VALIDATE_INT);
+        // echo $typeID . ", " . $classID . ", " . $makeID;
         // Get all categories
-        //$categories = get_categories();
+        $types = get_types();
+        $classes = get_classes();
+        $makes = get_makes();
         // Get all items based on category, defualt to all
-        // $items = get_items_by_category($category_id);
+        // $vehicles = get_vehicles(1, 1);
+        $vehicles = get_vehicles($typeID, $classID, $makeID, $sort, $sortDirection);
         // Set main display to toDoList
         $main = 'vehicles.php';
     }
@@ -119,5 +129,5 @@
     // Injection point for active page
     include($main);
     // Display Footer
-    // include('view/footer.php'); 
+    include('../footer.php'); 
 ?>

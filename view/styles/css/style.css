@@ -23,6 +23,12 @@ nav h1 {
   letter-spacing: .1em;
 }
 
+.table {
+  color: #40bfc1;
+  font-weight: bold;
+  margin-top: 25px;
+}
+
 #admin-nav {
   background-color: #f0134d !important;
 }
@@ -37,4 +43,8 @@ nav h1 {
 
 #admin-nav a {
   color: #f5f0e3;
+}
+
+#sort-sect {
+  width: 100%;
 }

@@ -79,7 +79,7 @@
                         <td><?php echo $vehicle['className']; ?></td>
                         <td><?php echo '$' . number_format($vehicle['price'], 2); ?><td>
                         <div class="text-center">
-                            <i class="fas fa-minus-circle mx-auto"  id="delete-vehicle"    onclick="deleteVehicle(<?php echo $vehicle['vehicleID']; ?>)"></i>
+                            <i class="fas fa-minus-circle mx-auto"  id="delete-vehicle"    onclick="deleteEntry(<?php echo $vehicle['vehicleID']; ?>, 'deleteVehicle')"></i>
                         </div>
                         
                     </tr>

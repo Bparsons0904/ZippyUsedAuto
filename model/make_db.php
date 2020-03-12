@@ -29,7 +29,7 @@
         $statement->closeCursor();
     }
 
-    function addMake() {
+    function addMake($makeName) {
         // Open Database
         global $db;
         // Check if category id greater than 1, not null
@@ -37,7 +37,7 @@
                 VALUES (:makeName)';
 
         $statement = $db->prepare($query);
-        $statement->bindValue(':makeID', $makeID);
+        $statement->bindValue(':makeName', $makeName);
         $statement->execute();
         $statement->closeCursor();
     }

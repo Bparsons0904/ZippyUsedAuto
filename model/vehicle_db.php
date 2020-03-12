@@ -94,7 +94,6 @@
         // Delete item from database
     function deleteVehicle($vehicleID) {
         // Open database
-        echo $vehicleID;
         global $db;
         // Get item based on item ID
         $query = 'DELETE FROM vehicles

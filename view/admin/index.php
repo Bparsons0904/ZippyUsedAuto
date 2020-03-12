@@ -61,7 +61,16 @@
     } else if ($action == 'addVehicle') {
         global $types, $classes, $makes;
         
+        setInputValues();
+        global $typeID, $classID, $makeID, $sort, $sortDirection;
+        // Get category ID from GET with validation
+        // echo $typeID . ", " . $classID . ", " . $makeID;
+        // Get all categories
         getTables();
+        // Get all items based on category, defualt to all
+        // $vehicles = get_vehicles(1, 1);
+
+        $vehicles = get_vehicles($typeID, $classID, $makeID, $sort, $sortDirection);
         // Display addVehicle
         $main = 'addVehicle.php';
     // Add item to the todo table action  
@@ -95,8 +104,91 @@
  
         $successStatement = $year . " " . $model ." was added to the To Do List Successfully.";
         
-        $main = 'addVehicle.php';
         header("Location: .?action=addVehicle&success=$successStatement");
+    } else if ($action == 'addMake') {
+        $makeName = filter_input(INPUT_POST, 'makeName');
+        if ($makeName == NULL) {
+            // Display error message
+            $error = "Invalid category name. Check name and try again.";
+            $main = './errors/error.php';
+        } else {
+            // Add category to category table
+            addMake($makeName);
+            // Display success message
+            $successStatement = $makeName . " was added as a Category.";
+            // $main = 'editMakes.php';
+            header("Location: .?action=editMakes&success=$successStatement");  
+        }
+    } else if ($action == 'deleteMake') {
+        $makeID = filter_input(INPUT_POST, 'deleteValue');
+        if ($makeID == NULL) {
+            // Display error message
+            $error = "Invalid category name. Check name and try again.";
+            $main = './errors/error.php';
+        } else {
+            // Add category to category table
+            deleteMake($makeID);
+            // Display success message
+            $successStatement = " was added as a Category.";
+
+            header("Location: .?action=editMakes&success=$successStatement");  
+        }
+    } else if ($action == 'addClass') {
+        $className = filter_input(INPUT_POST, 'className');
+        if ($className == NULL) {
+            // Display error message
+            $error = "Invalid category name. Check name and try again.";
+            $main = './errors/error.php';
+        } else {
+            // Add category to category table
+            addClass($className);
+            // Display success message
+            $successStatement = $className . " was added as a Category.";
+            // $main = 'editMakes.php';
+            header("Location: .?action=editClasses&success=$successStatement");  
+        }
+    } else if ($action == 'deleteClass') {
+        $classID = filter_input(INPUT_POST, 'deleteValue');
+        if ($classID == NULL) {
+            // Display error message
+            $error = "Invalid category name. Check name and try again.";
+            $main = './errors/error.php';
+        } else {
+            // Add category to category table
+            deleteClass($classID);
+            // Display success message
+            $successStatement = " was added as a Category.";
+
+            header("Location: .?action=editClasses&success=$successStatement");  
+        }
+    } else if ($action == 'addType') {
+        $typeName = filter_input(INPUT_POST, 'typeName');
+        if ($typeName == NULL) {
+            // Display error message
+            $error = "Invalid category name. Check name and try again.";
+            $main = './errors/error.php';
+        } else {
+            // Add category to category table
+            addType($typeName);
+            // Display success message
+            $successStatement = $typeName . " was added as a Category.";
+            // $main = 'editMakes.php';
+            header("Location: .?action=editTypes&success=$successStatement");  
+        }
+    } else if ($action == 'deleteType') {
+        $typeID = filter_input(INPUT_POST, 'deleteValue');
+        if ($typeID == NULL) {
+            // Display error message
+            $error = "Invalid category name. Check name and try again.";
+            $main = './errors/error.php';
+        } else {
+            // Add category to category table
+            deleteType($typeID);
+            // Display success message
+            $successStatement = " was added as a Category.";
+
+            header("Location: .?action=editTypes&success=$successStatement");  
+        }
     }
     // // Display category list action
     // } else if ($action == 'list_categories') {

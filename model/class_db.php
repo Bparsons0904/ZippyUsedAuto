@@ -16,4 +16,29 @@
         return $classes;
     }
 
+    function deleteClass($classID) {
+        // Open Database
+        global $db;
+        // Check if category id greater than 1, not null
+        $query = 'DELETE FROM class
+                WHERE classID = :classID';
+
+        $statement = $db->prepare($query);
+        $statement->bindValue(':classID', $classID);
+        $statement->execute();
+        $statement->closeCursor();
+    }
+
+    function addClass($className) {
+        // Open Database
+        global $db;
+        // Check if category id greater than 1, not null
+        $query = 'INSERT INTO class (className)
+                VALUES (:className)';
+
+        $statement = $db->prepare($query);
+        $statement->bindValue(':className', $className);
+        $statement->execute();
+        $statement->closeCursor();
+    }
 ?>

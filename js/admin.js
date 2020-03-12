@@ -22,20 +22,33 @@ let ascSortDirection = false;
 // function makeSelect() {
 //   document.getElementById("make-change").submit();
 // }
-function deleteVehicle(vehicleID) {
-  document.getElementById("deleteValue").value = vehicleID;
-  document.getElementById("action").value = "deleteVehicle";
-  // console.log(document.getElementById("action").value);
-  console.log(document.getElementById("deleteValue").value);
-  
+function deleteEntry(ID, type) {
+  document.getElementById("deleteValue").value = ID;
+  document.getElementById("action").value = type;
   this.formChange("POST");
 }
+
+// function deleteMake(makeID) {
+//   document.getElementById("deleteValue").value = makeID;
+//   document.getElementById("action").value = "deleteMake";
+//   this.formChange("POST");
+// }
+
+// function deleteType(typeID) {
+//   document.getElementById("deleteValue").value = typeID;
+//   document.getElementById("action").value = "deleteType";
+//   this.formChange("POST");
+// }
+
+// function deleteClass(classID) {
+//   document.getElementById("deleteValue").value = classID;
+//   document.getElementById("action").value = "deleteClass";
+//   this.formChange("POST");
+// }
 
 function formChange(type = "GET") {
   let element = document.getElementById("form-change");
   element.method = type;
-  console.log(element.method);
-  
   element.submit();
 }
 

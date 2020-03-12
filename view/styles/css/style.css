@@ -29,6 +29,10 @@ nav h1 {
   margin-top: 25px;
 }
 
+.vehicle-table {
+  overflow-x: auto;
+}
+
 #admin-nav {
   background-color: #f0134d !important;
 }
@@ -43,8 +47,4 @@ nav h1 {
 
 #admin-nav a {
   color: #f5f0e3;
-}
-
-#sort-sect {
-  width: 100%;
 }

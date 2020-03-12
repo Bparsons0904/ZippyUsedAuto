@@ -16,74 +16,91 @@
         }
     }
 
+    $typeID; $classID; $makeID; $price; $model; $year;
+    $sort; $sortDirection;
+    $types; $classes; $makes;
+
     // Set success, check if part of GET
     $success = filter_input(INPUT_GET, 'success');
 
+    
+
     // Default action, get categories by id or all
     if ($action == 'vehicle-list') {
+        setInputValues();
+        global $typeID, $classID, $makeID, $sort, $sortDirection;
         // Get category ID from GET with validation
-        $typeID = filter_input(INPUT_GET, 'typeID', FILTER_VALIDATE_INT);
-        $classID = filter_input(INPUT_GET, 'classID', FILTER_VALIDATE_INT);
-        $makeID = filter_input(INPUT_GET, 'makeID', FILTER_VALIDATE_INT);
-        $sort = filter_input(INPUT_GET, 'sort', FILTER_VALIDATE_INT);
-        $sortDirection = filter_input(INPUT_GET, 'sortDirection', FILTER_VALIDATE_INT);
         // echo $typeID . ", " . $classID . ", " . $makeID;
         // Get all categories
-        $types = get_types();
-        $classes = get_classes();
-        $makes = get_makes();
+        getTables();
         // Get all items based on category, defualt to all
         // $vehicles = get_vehicles(1, 1);
+
         $vehicles = get_vehicles($typeID, $classID, $makeID, $sort, $sortDirection);
         // Set main display to toDoList
         $main = 'vehicles.php';
+    } else if ($action == 'deleteVehicle') {
+        // Set variables from POST
+        setInputValues();
+        global $typeID, $classID, $makeID, $sort, $sortDirection; 
+        $vehicleID = filter_input(INPUT_POST, 'deleteValue', 
+                FILTER_VALIDATE_INT);
+        // Check if variables properly set
+        if ($vehicleID == NULL || $vehicleID == FALSE) {
+            // Add error message and display
+            // $error = "Missing or incorrect vehicle ID";
+            // $main = './errors/error.php';
+            $main = 'vehicles.php';
+        } else { 
+            // Delete item and display success message
+            // deleteVehicle($vehicleID);
+            $successStatement = "Vehicle was successfully removed from the list.";
+            header("Location: .?typeID=$typeID&classID=$classID&makeID=$makeID&sort=$sort&sortDirection=$sortDirection&success=$successStatement");
+        }
+    // Add to do item action
+    } else if ($action == 'addVehicle') {
+        getTables();
+        // Display addVehicle
+        $main = 'addVehicle.php';
+    // Add item to the todo table action  
+    
+    } else if ($action == 'editTypes') {
+        $types = get_types();
+        // Display addVehicle
+        $main = 'editTypes.php';
+    // Add item to the todo table action  
+    
+    } else if ($action == 'editClasses') {
+        $classes = get_classes();
+        // Display editClasses
+        $main = 'editClasses.php';
+    // Add item to the todo table action  
+    
+    } else if ($action == 'editMakes') {
+        $makes = get_makes();
+        // Display editMakes
+        $main = 'editMakes.php';
+    // Add item to the todo table action  
+    
+    } else if ($action == 'addVehicleSubmit') {
+        // Set variables and validate
+        $title = filter_input(INPUT_POST, 'title_form');
+        $description = filter_input(INPUT_POST, 'description');
+        $category_id = filter_input(INPUT_POST, 'category_id', 
+                FILTER_VALIDATE_INT);
+        // Verify all variables set properly
+        if ($category_id == NULL || $category_id == FALSE || $title == NULL || 
+                $description == NULL) {
+            // Display error message
+            $error = "Invalid data. Check all fields and try again.";
+            $main = './errors/error.php';
+        } else {
+            // Add item and display success message
+            add_item($title, $description, $category_id);
+            $successStatement = $title . " was added to the To Do List Successfully.";
+            header("Location: .?category_id=$category_id&success=$successStatement");
+        }
     }
-    // // Delete to do item action
-    // } else if ($action == 'delete_item') {
-    //     // Set variables from POST
-    //     $item_id = filter_input(INPUT_POST, 'item_id', 
-    //             FILTER_VALIDATE_INT);
-    //     $category_id = filter_input(INPUT_POST, 'category_id', 
-    //             FILTER_VALIDATE_INT);
-    //     // Check if variables properly set
-    //     if ($category_id == NULL || $category_id == FALSE ||
-    //             $item_id == NULL || $item_id == FALSE) {
-    //         // Add error message and display
-    //         $error = "Missing or incorrect item id or category id.";
-    //         $main = './errors/error.php';
-    //     } else { 
-    //         // Delete item and display success message
-    //         delete_item($item_id);
-    //         $successStatement = "Item was successfully marked as complete.";
-    //         header("Location: .?category_id=$category_id&success=$successStatement");
-    //     }
-    // // Add to do item action
-    // } else if ($action == 'additem') {
-    //     // Get all items from table using NULL category
-    //     $items = get_items_by_category(NULL);
-    //     // Set categories to all categories
-    //     $categories = get_categories();
-    //     // Display additem
-    //     $main = 'additem.php';
-    // // Add item to the todo table action  
-    // } else if ($action == 'add_item') {
-    //     // Set variables and validate
-    //     $title = filter_input(INPUT_POST, 'title_form');
-    //     $description = filter_input(INPUT_POST, 'description');
-    //     $category_id = filter_input(INPUT_POST, 'category_id', 
-    //             FILTER_VALIDATE_INT);
-    //     // Verify all variables set properly
-    //     if ($category_id == NULL || $category_id == FALSE || $title == NULL || 
-    //             $description == NULL) {
-    //         // Display error message
-    //         $error = "Invalid data. Check all fields and try again.";
-    //         $main = './errors/error.php';
-    //     } else {
-    //         // Add item and display success message
-    //         add_item($title, $description, $category_id);
-    //         $successStatement = $title . " was added to the To Do List Successfully.";
-    //         header("Location: .?category_id=$category_id&success=$successStatement");
-    //     }
     // // Display category list action
     // } else if ($action == 'list_categories') {
     //     // Get all categories
@@ -117,15 +134,37 @@
     //     $successStatement = "Category was successfully removed.";
     //     header("Location: .?action=list_categories&success=$successStatement");  
     // }
+    function setInputValues()
+    {
+        $inputType = ($_SERVER['REQUEST_METHOD'] === 'POST') ? INPUT_POST : INPUT_GET;
+        global $typeID, $classID, $makeID, $price; $model; $year;
+        global $sort, $sortDirection; 
+        $typeID = filter_input($inputType, 'typeID', FILTER_VALIDATE_INT);
+        $classID = filter_input($inputType, 'classID', FILTER_VALIDATE_INT);
+        $makeID = filter_input($inputType, 'makeID', FILTER_VALIDATE_INT);
+        $sort = filter_input($inputType, 'sort', FILTER_VALIDATE_INT);
+        $sortDirection = filter_input($inputType, 'sortDirection', FILTER_VALIDATE_INT);
+        $price = filter_input($inputType, 'price', FILTER_VALIDATE_INT);
+        $year = filter_input($inputType, 'year', FILTER_VALIDATE_INT);
+        $model = htmlspecialchars(filter_input($inputType, 'model'));
+    }
+
+    function getTables()
+    {
+        global $types, $classes, $makes;
+        $types = get_types();
+        $classes = get_classes();
+        $makes = get_makes();
+    }
 ?>
 
 <?php 
     // Display core of html head and nav
     include('./header.php');
     // Display success message if active
-    if ($success) {
-        include('view/pages/success.php'); 
-    } 
+    // if ($success) {
+    //     include('view/pages/success.php'); 
+    // } 
     // Injection point for active page
     include($main);
     // Display Footer

@@ -7,7 +7,7 @@
         $bindValues = [];
         $bindCount = 0;
         // Check if category id greater than 1, not null
-        $query = 'SELECT year, makes.makeName, model, price, type.typeName, class.className
+        $query = 'SELECT vehicleID, year, makes.makeName, model, price, type.typeName, class.className
                 FROM vehicles
                 LEFT JOIN makes on vehicles.makeID = makes.makeID
                 LEFT JOIN type on vehicles.typeID = type.typeID
@@ -91,5 +91,39 @@
         return $vehicles;
     }
 
-    
+        // Delete item from database
+    function deleteVehicle($vehicleID) {
+        // Open database
+        echo $vehicleID;
+        global $db;
+        // Get item based on item ID
+        $query = 'DELETE FROM vehicles
+                WHERE vehicleID = :vehicleID';
+        // PDO delete item from database
+        $statement = $db->prepare($query);
+        $statement->bindValue(':vehicleID', $vehicleID);
+        $statement->execute();
+        $statement->closeCursor();
+    }
+
+    // // Add to do item to database
+function addVehicle($year, $makeID, $model, $typeID, $classID, $price) {
+    // Open database
+    global $db;
+    // Set query for item to be added
+    $query = 'INSERT INTO todoitems
+                 (year, makeID, model, typeID, classID, price)
+              VALUES
+                 (:year, :makeID, :model, :typeID, :classID, :price)';
+    // PDO insert item into database
+    $statement = $db->prepare($query);
+    $statement->bindValue(':year', $year);
+    $statement->bindValue(':makeID', $makeID);
+    $statement->bindValue(':model', $model);
+    $statement->bindValue(':typeID', $typeID);
+    $statement->bindValue(':classID', $classID);
+    $statement->bindValue(':price', $price);
+    $statement->execute();
+    $statement->closeCursor();
+}
 ?>

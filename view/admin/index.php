@@ -53,12 +53,14 @@
             $main = 'vehicles.php';
         } else { 
             // Delete item and display success message
-            // deleteVehicle($vehicleID);
+            deleteVehicle($vehicleID);
             $successStatement = "Vehicle was successfully removed from the list.";
             header("Location: .?typeID=$typeID&classID=$classID&makeID=$makeID&sort=$sort&sortDirection=$sortDirection&success=$successStatement");
         }
     // Add to do item action
     } else if ($action == 'addVehicle') {
+        global $types, $classes, $makes;
+        
         getTables();
         // Display addVehicle
         $main = 'addVehicle.php';
@@ -77,29 +79,24 @@
     // Add item to the todo table action  
     
     } else if ($action == 'editMakes') {
-        $makes = get_makes();
+        $makes = getMakes();
         // Display editMakes
         $main = 'editMakes.php';
     // Add item to the todo table action  
     
     } else if ($action == 'addVehicleSubmit') {
         // Set variables and validate
-        $title = filter_input(INPUT_POST, 'title_form');
-        $description = filter_input(INPUT_POST, 'description');
-        $category_id = filter_input(INPUT_POST, 'category_id', 
-                FILTER_VALIDATE_INT);
+        setInputValues();
+        global $typeID, $classID, $makeID, $price, $model, $year;
         // Verify all variables set properly
-        if ($category_id == NULL || $category_id == FALSE || $title == NULL || 
-                $description == NULL) {
-            // Display error message
-            $error = "Invalid data. Check all fields and try again.";
-            $main = './errors/error.php';
-        } else {
             // Add item and display success message
-            add_item($title, $description, $category_id);
-            $successStatement = $title . " was added to the To Do List Successfully.";
-            header("Location: .?category_id=$category_id&success=$successStatement");
-        }
+
+        addVehicle($year, $makeID, $model, $typeID, $classID, $price);
+ 
+        $successStatement = $year . " " . $model ." was added to the To Do List Successfully.";
+        
+        $main = 'addVehicle.php';
+        header("Location: .?action=addVehicle&success=$successStatement");
     }
     // // Display category list action
     // } else if ($action == 'list_categories') {
@@ -137,7 +134,7 @@
     function setInputValues()
     {
         $inputType = ($_SERVER['REQUEST_METHOD'] === 'POST') ? INPUT_POST : INPUT_GET;
-        global $typeID, $classID, $makeID, $price; $model; $year;
+        global $typeID, $classID, $makeID, $price, $model, $year;
         global $sort, $sortDirection; 
         $typeID = filter_input($inputType, 'typeID', FILTER_VALIDATE_INT);
         $classID = filter_input($inputType, 'classID', FILTER_VALIDATE_INT);
@@ -147,6 +144,7 @@
         $price = filter_input($inputType, 'price', FILTER_VALIDATE_INT);
         $year = filter_input($inputType, 'year', FILTER_VALIDATE_INT);
         $model = htmlspecialchars(filter_input($inputType, 'model'));
+        
     }
 
     function getTables()
@@ -154,7 +152,7 @@
         global $types, $classes, $makes;
         $types = get_types();
         $classes = get_classes();
-        $makes = get_makes();
+        $makes = getMakes();
     }
 ?>
 

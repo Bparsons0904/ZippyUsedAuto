@@ -48,3 +48,16 @@ nav h1 {
 #admin-nav a {
   color: #f5f0e3;
 }
+
+.btn-color {
+  background-color: #f0134d;
+  color: #f5f0e3;
+}
+
+.inline-add-form {
+  margin: 25px 0;
+}
+
+.form-control {
+  width: 100%;
+}

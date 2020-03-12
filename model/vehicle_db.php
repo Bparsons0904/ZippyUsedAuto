@@ -111,7 +111,7 @@ function addVehicle($year, $makeID, $model, $typeID, $classID, $price) {
     // Open database
     global $db;
     // Set query for item to be added
-    $query = 'INSERT INTO todoitems
+    $query = 'INSERT INTO vehicles
                  (year, makeID, model, typeID, classID, price)
               VALUES
                  (:year, :makeID, :model, :typeID, :classID, :price)';

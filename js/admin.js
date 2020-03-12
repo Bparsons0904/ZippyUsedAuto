@@ -34,7 +34,7 @@ function deleteVehicle(vehicleID) {
 function formChange(type = "GET") {
   let element = document.getElementById("form-change");
   element.method = type;
-  console.log(element);
+  console.log(element.method);
   
   element.submit();
 }

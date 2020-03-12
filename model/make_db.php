@@ -1,5 +1,5 @@
 <?php
-    function get_makes() {
+    function getMakes() {
         // Open Database
         global $db;
         // Check if category id greater than 1, not null
@@ -14,6 +14,32 @@
         // print_r($makes);
         // Return queried to do vehicles
         return $makes;
+    }
+
+    function deleteMake($makeID) {
+        // Open Database
+        global $db;
+        // Check if category id greater than 1, not null
+        $query = 'DELETE FROM makes
+                WHERE makeID = :makeID';
+
+        $statement = $db->prepare($query);
+        $statement->bindValue(':makeID', $makeID);
+        $statement->execute();
+        $statement->closeCursor();
+    }
+
+    function addMake() {
+        // Open Database
+        global $db;
+        // Check if category id greater than 1, not null
+        $query = 'INSERT INTO makes (makeName)
+                VALUES (:makeName)';
+
+        $statement = $db->prepare($query);
+        $statement->bindValue(':makeID', $makeID);
+        $statement->execute();
+        $statement->closeCursor();
     }
 ?>
 

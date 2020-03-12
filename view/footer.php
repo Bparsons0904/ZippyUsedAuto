@@ -1,6 +1,6 @@
     </main>
-    <footer class="container">
-        <p id="copyright">&copy; <?php echo date("Y"); ?> My MVC To Do List</p>
+    <footer class="container-fluid my-auto">
+        <p id="copyright">&copy; <?php echo date("Y"); ?> Zippy Used Auto</p>
     </footer>
 </body>
 </html>

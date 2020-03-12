@@ -75,11 +75,9 @@
                     <th scope="col">Type</th>
                     <th scope="col">Class</th>
                     <th scope="col">Price</th>
-                    <th scope="col" class="text-center">Remove</th>
                 </tr>
             </thead>
             <tbody>
-                <input type="hidden" name="deleteValue" id="deleteValue" >
                 <?php foreach ($vehicles as $vehicle) : ?>
                     <tr>
                         <td><?php echo $vehicle['year']; ?></td>
@@ -87,13 +85,9 @@
                         <td><?php echo $vehicle['model']; ?></td>
                         <td><?php echo $vehicle['typeName']; ?></td>
                         <td><?php echo $vehicle['className']; ?></td>
-                        <td><?php echo '$' . number_format($vehicle['price'], 2); ?><td>
-                        <div class="text-center">
-                            <i class="fas fa-minus-circle mx-auto"  id="delete-vehicle"    onclick="deleteEntry(<?php echo $vehicle['vehicleID']; ?>, 'deleteVehicle')"></i>
-                        </div>
-                        
+                        <td id="price"><?php echo '$' . number_format($vehicle['price'], 2); ?></td>
                     </tr>
-                <?php endforeach; ?>
+                <?php endforeach; ?> 
             </tbody>
         </table>
     </div>

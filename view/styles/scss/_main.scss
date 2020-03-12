@@ -20,9 +20,80 @@ nav {
 }
 
 .vehicle-table {
+    overflow-y: hidden;
     overflow-x: auto;
 }
 
-// .no-match {
-//     color: $secondary-color;
-// }
+#admin-nav {
+    background-color: $primary-color!important;
+    h4 {
+        color: $accent-light;
+    }
+    button {
+        border-color: $accent-light;
+    }
+    a {
+        color: $accent-light;
+    }
+}
+
+.btn-color {
+    background-color: $primary-color;
+    color: $accent-light;
+}
+
+.inline-add-form {
+    margin: 25px 0;
+}
+
+.fa-minus-circle {
+    color: red;
+}
+
+#no-match {
+    color: $accent-dark;
+}
+
+.clear-filter {
+    float: right;
+    margin: 10px;
+    border-color: $accent-dark!important;
+    color: $accent-dark!important;
+}
+
+#form-change {
+    select {
+        margin: 5px 0;
+        padding: 0px 15px;
+    }
+    #sort-row {
+        margin-top: 5px;
+    }
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: #222;
+    z-index: 99;
+    #copyright {
+        float: right;
+        margin: 0px;
+        padding: 10px 20px;
+    }
+}
+
+#sort-row {
+    max-width: 300px;
+}
+
+
+
+@media (min-width: 768px) {
+    .table-sm {
+        th, td {
+            padding: 15px;
+        }
+    }
+  }

@@ -65,3 +65,7 @@ nav h1 {
 .fa-minus-circle {
   color: red;
 }
+
+.no-match {
+  color: #40bfc1;
+}

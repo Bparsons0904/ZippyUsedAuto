@@ -43,7 +43,7 @@
             </div>
         </div>
         <div class="row mx-auto" id="sort-row">
-            <div class="my-auto col-5">Sort By:</div>
+            <div class="my-auto col-4">Sort By:</div>
             <div class="form-check my-auto col-3">
                 <input class="form-check-input" type="radio" name="sort" id="priceSort" value="1" <?=($sort !== 0) ? 'checked':'';?> onchange="formChange()">
                 <label class="form-check-label" for="priceSort">
@@ -56,9 +56,9 @@
                     Year
                 </label>
             </div>
-            <div class="my-auto col-1">
+            <div class="my-auto col-1" onclick="sortDirection()">
                 <input type="hidden" name="sortDirection" id="sortDirectionValue" value="<?php echo $sortDirection; ?>">
-                <i class="fa fa-sort fa-sm py-1 text-white my-auto"  onclick="sortDirection()"></i>
+                <i class="fa fa-sort fa-sm py-1 text-white my-auto"  ></i>
             </div>
         </div>
         <div class="vehicle-table row">

@@ -12,6 +12,11 @@ body {
   color: #f5f0e3;
 }
 
+.btn-color {
+  background-color: #f0134d;
+  color: #f5f0e3;
+}
+
 nav {
   padding: 10px;
   background-color: #f0134d;
@@ -21,16 +26,6 @@ nav h1 {
   font-size: 2em;
   color: #f5f0e3;
   letter-spacing: 0.1em;
-}
-
-.table {
-  color: #40bfc1;
-  font-weight: bold;
-}
-
-.vehicle-table {
-  overflow-y: hidden;
-  overflow-x: auto;
 }
 
 #admin-nav {
@@ -49,9 +44,18 @@ nav h1 {
   color: #f5f0e3;
 }
 
-.btn-color {
-  background-color: #f0134d;
-  color: #f5f0e3;
+.table {
+  color: #40bfc1;
+  font-weight: bold;
+}
+
+.vehicle-table {
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+
+.two-col-table {
+  max-width: 750px;
 }
 
 .inline-add-form {
@@ -59,7 +63,11 @@ nav h1 {
 }
 
 .fa-minus-circle {
-  color: red;
+  color: #f0134d;
+}
+
+.filter-dropdown {
+  margin-bottom: 10px;
 }
 
 #no-match {
@@ -71,37 +79,6 @@ nav h1 {
   margin: 10px;
   border-color: #40bfc1 !important;
   color: #40bfc1 !important;
-}
-
-#form-change {
-  margin-top: 10px;
-}
-
-#form-change select {
-  margin: 5px 0;
-  padding: 0px 15px;
-}
-
-#form-change #sort-row {
-  margin-top: 5px;
-}
-
-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  background-color: #222;
-  z-index: 99;
-}
-
-footer #copyright {
-  float: right;
-  margin: 0px;
-  padding: 10px 20px;
-}
-
-#sort-row {
-  max-width: 300px;
 }
 
 #db-error {
@@ -119,10 +96,57 @@ footer #copyright {
   opacity: 0;
 }
 
+#form-change {
+  margin-top: 10px;
+}
+
+#form-change #sort-row {
+  margin-bottom: 10px;
+  max-width: 350px;
+}
+
+#form-change #sort-row div {
+  padding: 5px;
+}
+
+#add-vehicle .col-form-label {
+  margin-left: 10px;
+  width: 50px;
+}
+
+#add-vehicle .form-control {
+  margin-left: 15px;
+  width: 70% !important;
+  max-width: 300px;
+}
+
+.edit-header {
+  color: #40bfc1;
+  font-size: 2rem;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: #222;
+  z-index: 99;
+}
+
+footer #copyright {
+  float: right;
+  margin: 0px;
+  padding: 10px 20px;
+}
+
 @media (min-width: 768px) {
   .table-sm th,
   .table-sm td {
     padding: 15px;
+  }
+  .edit-header {
+    color: #40bfc1;
+    font-size: 2.5rem;
   }
 }
 

@@ -53,7 +53,7 @@
       <input type="hidden" name="action" value="" id="admin-input" />
       <ul class="navbar-nav">
         <li class="nav-item" onclick="navControl('vehicle-list')">
-          <a class="nav-link">Vehicles List</a>
+          <a class="nav-link">Vehicle List</a>
         </li>
         <li class="nav-item" onclick="navControl('addVehicle')">
           <a class="nav-link">Add Vehicle</a>

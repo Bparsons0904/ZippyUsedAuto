@@ -8,7 +8,7 @@
             <div class="filter-dropdown col-12 col-md-4">
                 <select class="form-control" id="makeID" name="makeID" onchange="formChange()">
                     <option value="0">All Makes</option>
-                    <!-- Loop through each category  -->
+                    <!-- Loop through each make  -->
                     <?php foreach ( $makes as $make ) : ?>
                         <option value="
                             <?php echo $make['makeID']; ?>" 
@@ -20,7 +20,7 @@
             <div class="filter-dropdown col-12 col-md-4">
                 <select class="form-control" id="typeID" name="typeID" onchange="formChange()">
                     <option value="0">All Types</option>
-                    <!-- Loop through each category  -->
+                    <!-- Loop through each type  -->
                     <?php foreach ( $types as $type ) : ?>
                         <option value="
                             <?php echo $type['typeID']; ?>" 
@@ -32,7 +32,7 @@
             <div class="filter-dropdown col-12 col-md-4">
                 <select class="form-control" id="classID" name="classID" onchange="formChange()">
                 <option value="0">All Classes</option>
-                <!-- Loop through each category  -->
+                <!-- Loop through each class  -->
                 <?php foreach ( $classes as $class ) : ?>
                     <option value="
                         <?php echo $class['classID']; ?>" 
@@ -41,11 +41,9 @@
                 <?php endforeach; ?>
                 </select>
             </div>
-            
-            
         </div>
         <div class="row mx-auto" id="sort-row">
-            <p class="my-auto col-4">Sort By:</p>
+            <div class="my-auto col-4">Sort By:</div>
             <div class="form-check my-auto col-3">
                 <input class="form-check-input" type="radio" name="sort" id="priceSort" value="1" <?=($sort !== 0) ? 'checked':'';?> onchange="formChange()">
                 <label class="form-check-label" for="priceSort">
@@ -58,50 +56,47 @@
                     Year
                 </label>
             </div>
-            <div>
+            <div class="my-auto col-1" onclick="sortDirection()">
                 <input type="hidden" name="sortDirection" id="sortDirectionValue" value="<?php echo $sortDirection; ?>">
-                <i class="fa fa-sort fa-sm py-1 text-white my-auto"  onclick="sortDirection()"></i>
+                <i class="fa fa-sort fa-sm py-1 text-white my-auto"  ></i>
             </div>
         </div>
-    
-
-    <div class="vehicle-table row">
-        <table class="table table-light table-sm">
-            <thead class="thead-light">
-                <tr>
-                    <th scope="col">Year</th>
-                    <th scope="col">Make</th>
-                    <th scope="col">Model</th>
-                    <th scope="col">Type</th>
-                    <th scope="col">Class</th>
-                    <th scope="col">Price</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($vehicles as $vehicle) : ?>
+        <div class="vehicle-table row">
+            <table class="table table-light table-sm">
+                <thead class="thead-light">
                     <tr>
-                        <td><?php echo $vehicle['year']; ?></td>
-                        <td><?php echo $vehicle['makeName']; ?></td>
-                        <td><?php echo $vehicle['model']; ?></td>
-                        <td><?php echo $vehicle['typeName']; ?></td>
-                        <td><?php echo $vehicle['className']; ?></td>
-                        <td id="price"><?php echo '$' . number_format($vehicle['price'], 2); ?></td>
+                        <th scope="col">Year</th>
+                        <th scope="col">Make</th>
+                        <th scope="col">Model</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Class</th>
+                        <th scope="col">Price</th>
                     </tr>
-                <?php endforeach; ?> 
-            </tbody>
-        </table>
-    </div>
-    
-    <?php
-    // If the to do list table is not empty diplay full list
-        if (count($vehicles) == 0) {
-    ?>
-    
-    <div id="no-match">
-        <h2 class="text-center">No Vehicles Match The Current Criteria</h2>
-        <h4 class="text-center">Please adjust your selections</h4>
-    </div>
+                </thead>
+                <tbody>
+                    <input type="hidden" name="deleteValue" id="deleteValue" >
+                    <?php foreach ($vehicles as $vehicle) : ?>
+                        <tr>
+                            <td><?php echo $vehicle['year']; ?></td>
+                            <td><?php echo $vehicle['makeName']; ?></td>
+                            <td><?php echo $vehicle['model']; ?></td>
+                            <td><?php echo $vehicle['typeName']; ?></td>
+                            <td><?php echo $vehicle['className']; ?></td>
+                            <td><?php echo '$' . number_format($vehicle['price'], 2); ?></td>
 
-    <?php } ?>  
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+        <?php
+        // If the vehicle table is empty diplay message
+            if (count($vehicles) == 0) {
+        ?>
+            <div id="no-match">
+                <h2 class="text-center">No Vehicles Match The Current Criteria</h2>
+                <h4 class="text-center">Please adjust your selections</h4>
+            </div>
+        <?php } ?>  
     </form>
 </section>

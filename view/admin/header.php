@@ -31,9 +31,10 @@
       src="https://kit.fontawesome.com/1691b24dfc.js"
       crossorigin="anonymous"
     ></script>
-    <script src="../../js/admin.js"></script>
+    <script src="../../js/script.js"></script>
   </head>
 
+  <!-- Admin Navigation Header -->
   <nav class="navbar navbar-expand-lg navbar-custom" id="admin-nav">
   <h4 class="navbar-brand">Zippy Used Auto</h4>
   <button

@@ -1,11 +1,6 @@
-<?php 
-
-?>
-
 <section class="container">
     <form action="index.php" method="POST" id="form-change" class="inline-add-form needs-validation">
         <input type="hidden" name="action" id="action" value="addVehicleSubmit">
-        <!-- <h5 onclick="clearFilters()">Clear Selections</h5> -->
         <div class="form-group form-inline">
             <label for="year" class="col-3 col-form-label">Year</label>
             <div class="col-9">
@@ -17,7 +12,7 @@
         <div class="col-9">
             <select class="form-control" id="makeID" name="makeID" type="number" required>
                 <option></option>
-                <!-- Loop through each category  -->
+                <!-- Loop through each make  -->
                 <?php foreach ( $makes as $make ) : ?>
                     <option value="
                         <?php echo $make['makeID']; ?>">
@@ -38,7 +33,7 @@
             <div class="col-9">
                 <select class="form-control" id="typeID" name="typeID" required>
                     <option></option>
-                    <!-- Loop through each category  -->
+                    <!-- Loop through each type  -->
                     <?php foreach ( $types as $type ) : ?>
                         <option value="
                             <?php echo $type['typeID']; ?>"><?php echo $type['typeName']; ?>
@@ -52,7 +47,7 @@
             <div class="col-9">
                 <select class="form-control" id="classID" name="classID" required>
                     <option></option>
-                    <!-- Loop through each category  -->
+                    <!-- Loop through each class  -->
                     <?php foreach ( $classes as $class ) : ?>
                         <option value="
                             <?php echo $class['classID']; ?>"><?php echo $class['className']; ?>

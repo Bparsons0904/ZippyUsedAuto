@@ -20,13 +20,12 @@ nav {
 nav h1 {
   font-size: 2em;
   color: #f5f0e3;
-  letter-spacing: .1em;
+  letter-spacing: 0.1em;
 }
 
 .table {
   color: #40bfc1;
   font-weight: bold;
-  margin-top: 25px;
 }
 
 .vehicle-table {
@@ -74,6 +73,10 @@ nav h1 {
   color: #40bfc1 !important;
 }
 
+#form-change {
+  margin-top: 10px;
+}
+
 #form-change select {
   margin: 5px 0;
   padding: 0px 15px;
@@ -101,8 +104,48 @@ footer #copyright {
   max-width: 300px;
 }
 
+#db-error {
+  color: #40bfc1;
+  margin-top: 50px;
+}
+
+#success {
+  color: #40bfc1;
+  font-size: 1em;
+  width: 100%;
+  padding: 10px;
+  -webkit-animation: fadeOut 3s;
+          animation: fadeOut 3s;
+  opacity: 0;
+}
+
 @media (min-width: 768px) {
-  .table-sm th, .table-sm td {
+  .table-sm th,
+  .table-sm td {
     padding: 15px;
+  }
+}
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }

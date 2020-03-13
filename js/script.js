@@ -1,94 +1,51 @@
-// function categorySelect() {
-//   document.getElementById("cat-change").submit();
-// }
-
-// function deleteItem(itemNum, categoryID) {
-//     document.getElementById("itemValue").value = itemNum;
-//     document.getElementById("categoryValue").value = categoryID;
-//     document.getElementById("delete-item-form").submit();
-// }
-
-// function deleteCategory(categoryID) {
-//     document.getElementById("delete-category-value").value = categoryID;
-//     document.getElementById("delete-category-form").submit();
-// }
-
-// window.onload = ()=> {
-//     const value = document.getElementById("navInput");
-//     const toDoList = document.getElementById("toDoList");
-//     const navControl = document.getElementById("navControl");
-//     toDoList.addEventListener("click", ()=> {
-//         value.value = "list-items";
-//         navControl.submit();
-//     })
-//     const addToDo = document.getElementById("addToDo");
-//     addToDo.addEventListener("click", ()=> {
-//         value.value = "additem";
-//         navControl.submit();
-//     })
-//     const categoryList = document.getElementById("categoryList");
-//     categoryList.addEventListener("click", ()=> {
-//         value.value = "list_categories";
-//         navControl.submit();
-//     })
-// }
-
+// Variable for sort direction asc/dec
 let ascSortDirection = false;
 
-// function typeSelect() {
-//   document.getElementById("type-change").submit();
-// }
-// function classSelect() {
-//   document.getElementById("class-change").submit();
-// }
-// function makeSelect() {
-//   document.getElementById("make-change").submit();
-// }
+// Delete database entry
+// Params Primary ID and DB Table to delete from
 function deleteEntry(ID, type) {
   document.getElementById("deleteValue").value = ID;
   document.getElementById("action").value = type;
+  // Submit form as POST
   this.formChange("POST");
 }
 
-// function deleteMake(makeID) {
-//   document.getElementById("deleteValue").value = makeID;
-//   document.getElementById("action").value = "deleteMake";
-//   this.formChange("POST");
-// }
-
-// function deleteType(typeID) {
-//   document.getElementById("deleteValue").value = typeID;
-//   document.getElementById("action").value = "deleteType";
-//   this.formChange("POST");
-// }
-
-// function deleteClass(classID) {
-//   document.getElementById("deleteValue").value = classID;
-//   document.getElementById("action").value = "deleteClass";
-//   this.formChange("POST");
-// }
-
+// Sumbit changes to form, default to GET
 function formChange(type = "GET") {
   let element = document.getElementById("form-change");
+  // Set type to GET/POST
   element.method = type;
+  // Submit form
   element.submit();
 }
 
+// Set all filter selections to default
 function clearFilters() {
   document.getElementById("typeID").value = 0;
   document.getElementById("classID").value = 0;
   document.getElementById("makeID").value = 0;
   document.getElementById("priceSort").value = 0;
   document.getElementById("sortDirectionValue").value = 0;
+  // Submit changes
   this.formChange();
 }
 
+// Alternate sort direction
 function sortDirection() {
   let element = document.getElementById("sortDirectionValue");
-  if (element.value == 1 ) {
-    element.value = 0;
-  } else {
-    element.value = 1;
-  }
+  element.value = element.value == 1 ? 0 : 1;
+  // Submite changes
   this.formChange();
+}
+
+// Open appropriate nav page based on selection
+function navControl(action) {
+  // Clear URL Params
+  history.pushState(null, "", location.href.split("?")[0]);
+  const navControl = document.getElementById("admin-control");
+  let navInput = document.getElementById("admin-input");
+  // Set navigation to action param
+  navInput.value = action;
+  // Submit form
+  navControl.submit();
 }

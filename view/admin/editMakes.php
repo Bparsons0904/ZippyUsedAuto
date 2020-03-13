@@ -1,5 +1,5 @@
 <section class="container">
-    <form action="index.php" method="POST" id="form-change" class="my-auto col-sm-12 col-med-6">
+    <form action="index.php" method="POST" id="form-change" class="col-sm-12 col-med-6">
         <input type="hidden" name="action" id="action" value="addMake">
   
 

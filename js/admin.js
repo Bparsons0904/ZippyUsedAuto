@@ -72,6 +72,7 @@ function sortDirection() {
 }
 
 function navControl(action) {
+  history.pushState(null, "", location.href.split("?")[0]);
   const navControl = document.getElementById("admin-control");
   let navInput = document.getElementById("admin-input");
   navInput.value = action;

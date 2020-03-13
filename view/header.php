@@ -37,7 +37,6 @@
  <body>
     <nav>
       <div class="row">
-
         <h1 class="my-auto col-12 text-center">
           Zippy Used Auto
         </h1>     

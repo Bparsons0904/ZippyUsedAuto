@@ -1,10 +1,18 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans|Oswald&display=swap");
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
-h1, h2, h3, h4 {
-  font-family: 'Oswald', sans-serif;
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Oswald", sans-serif;
+}
+
+a, a:hover, a:visited {
+  text-decoration: none;
+  color: #f5f0e3;
 }
 
 body {
@@ -23,9 +31,22 @@ nav {
 }
 
 nav h1 {
-  font-size: 2em;
+  font-size: 1.5em;
   color: #f5f0e3;
   letter-spacing: 0.1em;
+}
+
+nav h4 {
+  font-size: 1em;
+}
+
+nav a, nav a h1 {
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+nav a:hover, nav a:hover h1 {
+  color: #40bfc1;
 }
 
 #admin-nav {
@@ -139,7 +160,65 @@ footer #copyright {
   padding: 10px 20px;
 }
 
-@media (min-width: 768px) {
+#logout-text {
+  padding: 15px;
+}
+
+#registration-form h1 {
+  padding: 15px;
+}
+
+#registration-form #reg-row {
+  display: flexbox;
+  margin: auto;
+}
+
+#registration-form #reg-row #reg-input {
+  margin: auto;
+}
+
+#registration-form #reg-row #reg-input input {
+  margin: 10px;
+}
+
+#registration-form #reg-row button {
+  margin: 10px;
+  float: right;
+  padding: 5px;
+  border-color: #40bfc1 !important;
+  color: #40bfc1 !important;
+}
+
+#register h2 {
+  padding: 10px;
+}
+
+.return-link a {
+  color: #40bfc1;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+.return-link a:hover {
+  color: #ff6f5e;
+}
+
+@media (min-width: 576px) {
+  #registration-form h1 {
+    padding: 25px;
+  }
+  #registration-form input {
+    max-width: 300px;
+  }
+}
+
+@media (min-width: 720px) {
+  nav h1 {
+    font-size: 2em;
+  }
+  nav h4 {
+    font-size: 1.5em;
+  }
   .table-sm th,
   .table-sm td {
     padding: 15px;

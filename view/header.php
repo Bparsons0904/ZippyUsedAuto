@@ -1,3 +1,12 @@
+<?php
+  // Check if session has been started, if not start session
+  session_status() === PHP_SESSION_ACTIVE ? '' : session_start();
+	if (isset($_SESSION['firstname'])) {
+    // Set variable to cookie name
+    $firstname = $_SESSION['firstname'];
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -37,9 +46,19 @@
  <body>
     <nav>
       <div class="row">
-        <h1 class="my-auto col-12 text-center">
-          Zippy Used Auto
-        </h1>     
+        <a href="index.php" class="my-auto col-8 text-center">
+          <h1>Zippy Used Auto</h1>
+        </a>
+        <div class="ml-auto my-auto col-4">
+          <!-- Check if cookie for name is set
+          Welcome message if set, registration link otherwise -->
+          <?php
+	          if(isset($_SESSION['firstname'])){ ?>
+              <h4>Welcome <?php echo $firstname ?>!<a id="header-logout" href="logout.php">(Logout)</a></h4>
+            <?php } else { ?>
+            <a href="register.php"><h4>Register</h4></a>
+            <?php } ?>
+        </div>
       </div>
     </nav>
     <main class="container">

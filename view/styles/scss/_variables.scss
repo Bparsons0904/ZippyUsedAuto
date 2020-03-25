@@ -4,12 +4,20 @@ $secondary-color: #ff6f5e;
 $accent-light: #f5f0e3;
 $accent-dark: #40bfc1;
 
-@import url('https://fonts.googleapis.com/css?family=Open+Sans|Oswald&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Oswald&display=swap");
 
 body {
-    font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
-h1, h2, h3, h4 {
-    font-family: 'Oswald', sans-serif;
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Oswald", sans-serif;
+}
+
+a, a:hover, a:visited {
+  text-decoration: none;
+  color: $accent-light;
 }

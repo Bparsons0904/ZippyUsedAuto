@@ -1,8 +1,14 @@
 // Color Variablescc
-$primary-color: #f0134d;
-$secondary-color: #ff6f5e;
-$accent-light: #f5f0e3;
-$accent-dark: #40bfc1;
+$primary-color: #0488B3;
+$secondary-color: #87A330;
+$accent-light: #F9F5E5;
+$accent-dark: #5C083A;
+$color-grey: #2D2D2A;
+$warning-color: #c93232;
+// $primary-color: #f0134d;
+// $secondary-color: #ff6f5e;
+// $accent-light: #f5f0e3;
+// $accent-dark: #40bfc1;
 
 @import url("https://fonts.googleapis.com/css?family=Open+Sans|Oswald&display=swap");
 
@@ -19,5 +25,5 @@ h4 {
 
 a, a:hover, a:visited {
   text-decoration: none;
-  color: $accent-light;
+  color: #fff;
 }

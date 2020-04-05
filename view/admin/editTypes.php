@@ -1,3 +1,8 @@
+<?php 
+    // Check if valid admin is logged in
+    require_once('../../util/valid_admin.php');
+?>
+
 <section class="container">
     <h1 class="text-center edit-header">Edit Types</h1>
     <form action="index.php" method="POST" id="form-change" class="col-sm-12 col-med-6">

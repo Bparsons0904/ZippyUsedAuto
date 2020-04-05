@@ -6,7 +6,8 @@
     require('../../model/type_db.php');
     require('../../model/class_db.php');
     require('../../model/make_db.php');
-   
+    // Check if valid admin is logged in
+    require_once('../../util/valid_admin.php');
     // Set action based on if POST or GET
     $action = filter_input(INPUT_POST, 'action');
     if ($action == NULL) {
@@ -183,6 +184,22 @@
             $successStatement = "Type successfully deleted.";
             header("Location: .?action=editTypes&success=$successStatement");  
         }
+    } else if ($action == 'logout') {
+        session_unset();
+        // Destroy session
+        session_destroy();
+        // Set variables need to delete cookies
+        $name = session_name();
+        $expire = strtotime('-1 year');
+        $params = session_get_cookie_params();
+        $path = $params['path'];
+        $domain = $params['domain'];
+        $secure = $params['secure'];
+        $httponly = $params['httponly'];
+        // Delete cookies
+        setcookie($name, '', $expire, $path, $domain, $secure, $httponly);
+        $successStatement = "You are logged out.";
+            header("Location: .?action=editTypes&success=$successStatement"); 
     }
 
     // Set all possible GET/POST values

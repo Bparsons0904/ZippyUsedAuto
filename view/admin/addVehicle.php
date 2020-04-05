@@ -1,3 +1,8 @@
+<?php 
+    // Check if valid admin is logged in
+    require_once('../../util/valid_admin.php');
+?>
+
 <section class="container" id="add-vehicle">
     <form action="index.php" method="POST" id="form-change" class="inline-add-form">
         <div class="row justify-content-center">

@@ -36,38 +36,48 @@
 
   <!-- Admin Navigation Header -->
   <nav class="navbar navbar-expand-lg navbar-custom" id="admin-nav">
-  <h4 class="navbar-brand">Zippy Used Auto</h4>
-  <button
-    class="navbar-toggler"
-    type="button"
-    data-toggle="collapse"
-    data-target="#navbarNavDropdown"
-    aria-controls="navbarNavDropdown"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-  >
-    <i class="fa fa-bars fa-sm py-1 text-white"></i>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <form method="POST" id="admin-control">
-      <input type="hidden" name="action" value="" id="admin-input" />
-      <ul class="navbar-nav">
-        <li class="nav-item" onclick="navControl('vehicle-list')">
-          <a class="nav-link">Vehicle List</a>
-        </li>
-        <li class="nav-item" onclick="navControl('addVehicle')">
-          <a class="nav-link">Add Vehicle</a>
-        </li>
-        <li class="nav-item" onclick="navControl('editMakes')">
-          <a class="nav-link" href="#">Edit Makes</a>
-        </li>
-        <li class="nav-item" onclick="navControl('editTypes')">
-          <a class="nav-link" href="#">Edit Types</a>
-        </li>
-        <li class="nav-item" onclick="navControl('editClasses')">
-          <a class="nav-link" href="#">Edit Classes</a>
-        </li>
-      </ul>
-    </form>
-  </div>
-</nav>
+    <a href="./index.php" ><h4 class="navbar-brand">Zippy Used Auto</h4></a>
+    
+    <?php if (isset($_SESSION['is_valid_admin'])) { ?>
+      <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <i class="fa fa-bars fa-sm py-1 text-white"></i>
+    </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <form method="POST" id="admin-control" action="./index.php">
+          <input type="hidden" name="action" value="" id="admin-input" />
+          <ul class="navbar-nav">
+            <li class="nav-item" onclick="navControl('vehicle-list')">
+              <a class="nav-link" href="#">Vehicle List</a>
+            </li>
+            <li class="nav-item" onclick="navControl('addVehicle')">
+              <a class="nav-link" href="#">Add Vehicle</a>
+            </li>
+            <li class="nav-item" onclick="navControl('editMakes')">
+              <a class="nav-link" href="#">Edit Makes</a>
+            </li>
+            <li class="nav-item" onclick="navControl('editTypes')">
+              <a class="nav-link" href="#">Edit Types</a>
+            </li>
+            <li class="nav-item" onclick="navControl('editClasses')">
+              <a class="nav-link" href="#">Edit Classes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./register.php">Register</a>
+            </li>
+            <li class="nav-item" onclick="navControl('logout')">
+              <a class="nav-link" href="#">Logout</a>
+            </li>
+          </ul>
+        </form>
+      </div>
+    <?php } ?>
+  
+  </nav>

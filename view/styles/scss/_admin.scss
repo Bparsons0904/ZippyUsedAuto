@@ -1,0 +1,142 @@
+// Administrative Nav CSS
+// #admin-nav {
+//   background-color: $primary-color !important;
+//   h4 {
+//     color: $accent-light;
+//   }
+//   button {
+//     border-color: $accent-light;
+//   }
+//   a {
+//     color: $accent-light;
+//   }
+// }
+
+// Add vehicle form specific CSS
+#add-vehicle {
+  .col-form-label {
+    margin-left: 10px;
+    width: 50px;
+  }
+  .form-control {
+    margin-left: 15px;
+    width: 70% !important;
+    max-width: 300px;
+  }
+}
+
+.delete-vehicle {
+  color: $warning-color;
+}
+
+// Edit forms CSS
+.edit-header {
+  color: $accent-dark;
+  font-size: 2rem;
+}
+
+.grid-form {
+  background-color: #ffffff;
+  max-width: 500px;
+  color: $primary-color;
+  padding: 1em;
+  margin: 2em auto;
+  border-radius: .5em;
+  form {
+    max-width: 400px;
+    margin: auto;
+    .submit-button {
+      width: 100%;
+      padding: 1.5em 0 2em;
+      
+      button {
+        background-color: $secondary-color;
+        float: right;
+        transition: .5s;
+      }
+      button:hover {
+        background-color: $accent-dark;
+        color: #fff;
+      }
+    }
+  }
+  .grid-form-group {
+    display: grid;
+    grid-template-areas:
+      "input"
+      "label"
+      "error";
+    grid-auto-columns: 1fr;
+    padding: 1.5em 0 0;
+    label {
+      grid-area: label;
+      font-weight: bold;
+      margin: auto 0;
+    }
+    input {
+      // display: grid;
+      grid-area: input;
+      border: none;
+      border-bottom: 1px $primary-color solid;
+      background-color: #ffffff;
+    }
+    input:focus {
+      outline: none !important;
+      // border: 2px $accent-dark solid;
+    }
+    input:focus-within {
+      outline: none !important;
+      background-color: #ffffff;
+    }
+    input:-internal-autofill-selected {
+      background-color: #ffffff;
+    }
+    p {
+      margin: 0;
+      padding: 0.2em;
+      color: $warning-color;
+      grid-area: error;
+    }
+  }
+
+  
+}
+
+// Media query for larger than tablet size
+@media (min-width: 736px) {
+  // Consumer Nav CSS
+  .grid-form {
+    padding: 2em;
+    margin: 3em auto;
+    .grid-form-group {
+      grid-template-areas:
+      "label label input input input"
+      "blank blank error error error";
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  #admin-nav {
+    h4 {
+      font-size: 2em;
+    }
+    a {
+      font-size: 1.1em;
+    }
+    form {
+      margin-left: auto;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  #admin-nav {
+    h4 {
+      margin-left: 1.5em;
+    }
+    form {
+      margin-right: 1.5em;
+    }
+  }
+}

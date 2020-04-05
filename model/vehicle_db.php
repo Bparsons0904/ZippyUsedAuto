@@ -1,4 +1,3 @@
-
 <?php
 
     function get_vehicles($typeID, $classID, $makeID, $sort, $sortDirection) {

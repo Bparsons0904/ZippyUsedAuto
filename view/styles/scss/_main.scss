@@ -1,27 +1,29 @@
 // General CSS
 body {
-  background-color: #333;
+  background-color: $color-grey;
   color: $accent-light;
 }
 
 .btn-color {
   background-color: $primary-color;
-  color: $accent-light;
+  color: #fff;
 }
 
 // Consumer Nav CSS
 nav {
   padding: 10px;
   background-color: $primary-color;
+  
   h1 {
     font-size: 1.5em;
-    color: $accent-light;
+    color: #333;
     letter-spacing: 0.1em;
   }
   h4 {
     font-size: 1em;
   }
   a, a h1 {
+    font-weight: bold;
     transition: 1s;
   }
   a:hover, a:hover h1 {
@@ -29,24 +31,13 @@ nav {
   }
 }
 
-// Administrative Nav CSS
-#admin-nav {
-  background-color: $primary-color !important;
-  h4 {
-    color: $accent-light;
-  }
-  button {
-    border-color: $accent-light;
-  }
-  a {
-    color: $accent-light;
-  }
-}
-
 // Table CSS
-.table {
-  color: $accent-dark;
+tbody {
+  color: $primary-color;
   font-weight: bold;
+  tr:nth-child(odd) {
+    background-color: $accent-light;
+  }
 }
 
 .vehicle-table {
@@ -69,16 +60,26 @@ nav {
   margin-bottom: 10px;
 }
 
+.dropdown-content li.active, .dropdown-content li:hover {
+  background-color: #9b1759;
+}
+
 // User tip CSS
 #no-match {
-  color: $accent-dark;
+  color: $secondary-color;
 }
 
 .clear-filter {
   float: right;
   margin: 10px;
-  border-color: $accent-dark !important;
-  color: $accent-dark !important;
+  border: none;
+  color: $accent-light !important;
+  background-color: $secondary-color;
+  transition: .5s;
+}
+
+.clear-filter:hover {
+  background-color: $accent-dark;  
 }
 
 #db-error {
@@ -105,25 +106,6 @@ nav {
       padding: 5px;
     }
   }
-}
-
-// Add vehicle form specific CSS
-#add-vehicle {
-  .col-form-label {
-    margin-left: 10px;
-    width: 50px;
-  }
-  .form-control {
-    margin-left: 15px;
-    width: 70% !important;
-    max-width: 300px;
-  }
-}
-
-// Edit forms CSS
-.edit-header {
-  color: $accent-dark;
-  font-size: 2rem;
 }
 
 // Footer CSS
@@ -186,6 +168,14 @@ footer {
   }
 }
 
+// Disable autofill background
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
 // Media query for large phone
 @media (min-width: 576px) {
   #registration-form {
@@ -222,6 +212,8 @@ footer {
     font-size: 2.5rem;
   }
 }
+
+
 
 // Fade out animaiton
 @keyframes fadeOut {

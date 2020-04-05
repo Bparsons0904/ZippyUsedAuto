@@ -3,6 +3,7 @@
     require_once('../../util/valid_admin.php');
 ?>
 
+<!-- Main section of page -->
 <section class="container">
     <form action="index.php" method="POST" id="form-change" class="my-auto col-sm-12 col-med-6">
         <input type="hidden" name="action" id="action">
@@ -90,7 +91,7 @@
                             <td><?php echo $vehicle['className']; ?></td>
                             <td><?php echo '$' . number_format($vehicle['price'], 2); ?></td>
                             <td class="text-center">
-                                <i class="fas fa-minus-circle mx-auto delete-vehicle" onclick="deleteEntry(<?php echo $vehicle['vehicleID']; ?>, 'deleteVehicle')"></i>
+                                <i class="fas fa-minus-circle mx-auto delete-icon" onclick="deleteEntry(<?php echo $vehicle['vehicleID']; ?>, 'deleteVehicle')"></i>
                             </td>
                         </tr>
                     <?php endforeach; ?>

@@ -1,31 +1,9 @@
 // Administrative Nav CSS
-// #admin-nav {
-//   background-color: $primary-color !important;
-//   h4 {
-//     color: $accent-light;
-//   }
-//   button {
-//     border-color: $accent-light;
-//   }
-//   a {
-//     color: $accent-light;
-//   }
-// }
-
-// Add vehicle form specific CSS
-#add-vehicle {
-  .col-form-label {
-    margin-left: 10px;
-    width: 50px;
-  }
-  .form-control {
-    margin-left: 15px;
-    width: 70% !important;
-    max-width: 300px;
-  }
+.header {
+  color: $secondary-color;
+  margin: 1em auto;
 }
-
-.delete-vehicle {
+.delete-icon {
   color: $warning-color;
 }
 
@@ -35,6 +13,7 @@
   font-size: 2rem;
 }
 
+// Grid layout for froms
 .grid-form {
   background-color: #ffffff;
   max-width: 500px;
@@ -43,7 +22,6 @@
   margin: 2em auto;
   border-radius: .5em;
   form {
-    max-width: 400px;
     margin: auto;
     .submit-button {
       width: 100%;
@@ -73,8 +51,7 @@
       font-weight: bold;
       margin: auto 0;
     }
-    input {
-      // display: grid;
+    input, select { 
       grid-area: input;
       border: none;
       border-bottom: 1px $primary-color solid;
@@ -82,7 +59,6 @@
     }
     input:focus {
       outline: none !important;
-      // border: 2px $accent-dark solid;
     }
     input:focus-within {
       outline: none !important;
@@ -98,13 +74,20 @@
       grid-area: error;
     }
   }
+}
 
-  
+.grid-form-lg {
+  max-width: 1200px;
+  margin-bottom: 5em;
+  .grid-form-group-lg {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
 }
 
 // Media query for larger than tablet size
-@media (min-width: 736px) {
-  // Consumer Nav CSS
+@media (min-width: 768px) {
+  // From Grid layout adjustments
   .grid-form {
     padding: 2em;
     margin: 3em auto;
@@ -112,6 +95,16 @@
       grid-template-areas:
       "label label input input input"
       "blank blank error error error";
+    }
+  }
+  .grid-form-lg {
+    .grid-form-group-lg {
+      grid-template-columns: 1fr 1fr;
+      grid-column-gap: 3em;
+      .grid-form-group {
+        grid-template-areas:
+      "label input input input";
+      }
     }
   }
 }
@@ -127,6 +120,9 @@
     form {
       margin-left: auto;
     }
+  }
+  .grid-form-lg {
+    padding: 3em 4em;
   }
 }
 

@@ -36,7 +36,7 @@ tbody {
   color: $primary-color;
   font-weight: bold;
   tr:nth-child(odd) {
-    background-color: $accent-light;
+    background-color: #efefef;
   }
 }
 
@@ -67,6 +67,7 @@ tbody {
 // User tip CSS
 #no-match {
   color: $secondary-color;
+  margin: 2em;;
 }
 
 .clear-filter {
@@ -174,6 +175,7 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus, 
 input:-webkit-autofill:active  {
     -webkit-box-shadow: 0 0 0 30px white inset !important;
+    box-shadow: 0 0 0 30px white inset !important;
 }
 
 // Media query for large phone

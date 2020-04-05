@@ -3,32 +3,41 @@
     require_once('../../util/valid_admin.php');
 ?>
 
+<!-- Main section of page -->
 <section class="container">
-    <h1 class="text-center edit-header">Edit Types</h1>
+    <h1 class="text-center header">Edit Types</h1>
     <form action="index.php" method="POST" id="form-change" class="col-sm-12 col-med-6">
         <input type="hidden" name="action" id="action" value="addType">
-        <div class="vehicle-table two-col-table mx-auto">
-            <table class="table table-light table-sm">
-                <thead class="thead-light">
-                    <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col" class="text-center">Remove</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <input type="hidden" name="deleteValue" id="deleteValue" >
-                    <!-- Loop through each type -->
-                    <?php foreach ($types as $type) : ?>
+        <!-- If types array not empty dipsplay table -->
+        <?php if (count($types) > 1) { ?>
+            <div class="vehicle-table two-col-table mx-auto">
+                <table class="table table-light table-sm">
+                    <thead class="thead-light">
                         <tr>
-                            <td><?php echo $type['typeName']; ?></td>
-                            <td class="text-center">
-                                <i class="fas fa-minus-circle mx-auto"  id="delete-type"    onclick="deleteEntry(<?php echo $type['typeID']; ?>, 'deleteType')"></i>
-                            </td>
+                            <th scope="col">Name</th>
+                            <th scope="col" class="text-center">Remove</th>
                         </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        </div>
+                    </thead>
+                    <tbody>
+                        <input type="hidden" name="deleteValue" id="deleteValue" >
+                        <!-- Loop through each type -->
+                        <?php foreach ($types as $type) : ?>
+                            <tr>
+                                <td><?php echo $type['typeName']; ?></td>
+                                <td class="text-center">
+                                    <i class="fas fa-minus-circle mx-auto delete-icon"  id="delete-type"    onclick="deleteEntry(<?php echo $type['typeID']; ?>, 'deleteType')"></i>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>        
+        <!-- Array empty, display empty message -->
+        <?php } else { ?>
+            <div id="no-match">
+                <h2 class="text-center">No Types Entered</h2>
+            </div>
+        <?php } ?>
         <div class="form-group form-inline two-col-table mx-auto">
             <label for="className" class="col-3 col-md-2 col-form-label">Type</label>
             <div class="col-9 col-md-6">
